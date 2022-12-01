@@ -47,6 +47,7 @@ class tblResult(models.Model):
     studentId=models.ForeignKey(tblStudents,on_delete=models.CASCADE)
     classId=models.ForeignKey(tblClasses,on_delete=models.CASCADE)
     subjectId=models.ForeignKey(tblSubjects,on_delete=models.CASCADE)
+    mark=models.IntegerField()
     status=models.IntegerField()
     creationDate=models.DateTimeField()
     updationDate=models.DateTimeField()

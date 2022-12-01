@@ -15,5 +15,10 @@ urlpatterns=[
   path('editsubject/<int:sid>/',views.editsubject,name="editsubject"),
   path('deletesubject/<int:sid>/',views.deletesubject,name="deletesubject"),
   path('student/',views.student,name="student"),
+  path('addstudent/',views.addstudent,name="addstudent"),
+  path('editstudent/<int:sid>/',views.editstudent,name="editstudent"),
+  path('changestatuss/<int:sid>/',views.changestatuss,name="changestatuss"),
+  path('deletestudent/<int:sid>/',views.deletestudent,name="deletestudent"),
+  path('markstudent/<int:sid>/',views.markstudent,name="markstudent"),
   path('empty/',views.empty,name="empty")
 ]

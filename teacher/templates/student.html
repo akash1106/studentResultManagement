@@ -56,14 +56,14 @@
                     <td>{{ stu.classId.id }}</td> 
                     <td>{{ stu.regDate }}</td>
                     <td>{{ stu.updationDate }}</td>
-                    <td><a class="danget" ><button class="btn btn-success"> {{ stu.status }}</button></a></td>
-                    <td><a class="danger"  ><button class="btn btn-success">mark</button></a></td>
-                    <td><a class="danger"  ><button class="btn btn-success">edit</button></a></td>
-                    <td><a class="danger" ><button class="btn btn-success">Delete</button></a></td>
+                    <td><a class="danget" href="{% url 'changestatuss' stu.studentsId %}"><button class="btn btn-success"> {{ stu.status }}</button></a></td>
+                    <td><a class="danger" href="{% url 'markstudent' stu.studentsId %}" ><button class="btn btn-success">mark</button></a></td>
+                    <td><a class="danger" href="{% url 'editstudent' stu.studentsId %}"><button class="btn btn-success">edit</button></a></td>
+                    <td><a class="danger" href="{% url 'deletestudent' stu.studentsId %}"><button class="btn btn-success">Delete</button></a></td>
                 </tr>
             {% endfor %}
           </tbody>
     </table>
-    <a class="success" ><button class="btn btn-success">ADD</button></a>
+    <a class="success" href="{% url 'addstudent' %}"><button class="btn btn-success">ADD</button></a>
 </body>
 </html>

@@ -31,31 +31,31 @@
                 student
             </div>
             <div class="card-body">
-                <form method="post" action="{% url 'addstudent' %}">
+                <form method="post" action="{% url 'editstudent' stu.studentsId %}">
                     {% csrf_token %}
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1">studentsName</span>
-                        <input type="text" class="form-control" placeholder="studentsName" name="studentsName" aria-label="Username" aria-describedby="basic-addon1">
+                        <input type="text" class="form-control" placeholder="studentsName" value="{{ stu.studentsName }}" name="studentsName" aria-label="Username" aria-describedby="basic-addon1">
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1">rollId</span>
-                        <input type="text" class="form-control" placeholder="rollId" name="rollId" aria-label="Password" aria-describedby="basic-addon1">
+                        <input type="text" class="form-control" placeholder="rollId" name="rollId" value="{{ stu.rollId }}" aria-label="Password" aria-describedby="basic-addon1">
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1">studentsEmail</span>
-                        <input type="text" class="form-control" placeholder="studentsEmail" name="studentsEmail" aria-label="Password" aria-describedby="basic-addon1">
+                        <input type="text" class="form-control" placeholder="studentsEmail" name="studentsEmail" value="{{ stu.studentsEmail }}" aria-label="Password" aria-describedby="basic-addon1">
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1">gender</span>
-                        <input type="text" class="form-control" placeholder="gender" name="gender" aria-label="Username" aria-describedby="basic-addon1">
+                        <input type="text" class="form-control" placeholder="gender" name="gender" value="{{ stu.gender }}" aria-label="Username" aria-describedby="basic-addon1">
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1">DOB</span>
-                        <input type="date" class="form-control" placeholder="DOB" name="DOB" aria-label="Password" aria-describedby="basic-addon1">
+                        <input type="date" class="form-control" placeholder="DOB" name="DOB" value="{{ stu.DOB }}" aria-label="Password" aria-describedby="basic-addon1">
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1">classId</span>
-                        <input type="text" class="form-control" placeholder="classId" name="classId" aria-label="Password" aria-describedby="basic-addon1">
+                        <input type="text" class="form-control" placeholder="classId" name="classId" value="{{ stu.classId.id }}" aria-label="Password" aria-describedby="basic-addon1">
                     </div>
                     <div class="row">
                         <div class="col">

@@ -154,7 +154,6 @@ def subject(request):
         if request.COOKIES['log'] == 'p':
             data=admin.objects.filter(userName=request.COOKIES['username'],password=request.COOKIES['passwd'])
             if data:
-                print(tblSubjectCombination.objects.all()[0].id)
                 return render(request,"subject.html",{
                     "cla1":tblSubjectCombination.objects.all(),
                 })
@@ -271,9 +270,102 @@ def addstudent(request):
         l1=tblStudents.objects.all()
         if ob1 not in l1:
             tblStudents.save(ob1)
-        li1=tblSubjectCombination.objects.filter(classId=tblClasses.objects.)
-        for 
+        li1=tblSubjectCombination.objects.filter(classId=tblClasses.objects.get(id=classId))
+        for i in li1:
+            ob=tblResult.objects.create(studentId=ob1,classId=tblClasses.objects.get(id=classId),mark=0,subjectId=i.subjectId,status=0,creationDate=datetime.datetime.now(),updationDate=datetime.datetime.now())
+            tblResult.save(ob)
         return HttpResponseRedirect(reverse('phome'))
+def editstudent(request,sid):
+    if request.method=="GET":
+        if 'username' in request.COOKIES and 'passwd' in request.COOKIES and 'log' in request.COOKIES:
+            if request.COOKIES['log'] == 'p':
+                data=admin.objects.filter(userName=request.COOKIES['username'],password=request.COOKIES['passwd'])
+                li=tblStudents.objects.get(studentsId=sid)
+                if data and li:
+                    return render(request,"editstudent.html",{
+                        "stu":li
+                    })
+                else:
+                    return render(request,"plogin.html")
+    if request.method=="POST":
+        studentsName=request.POST["studentsName"]
+        rollId=request.POST["rollId"]
+        studentsEmail=request.POST["studentsEmail"]
+        gender=request.POST["gender"]
+        DOB1=request.POST["DOB"]
+        classId=request.POST["classId"]
+        ob1=tblStudents.objects.get(studentsId=sid)
+        ob1.studentsName=studentsName
+        ob1.rollId=rollId
+        ob1.studentsEmail=studentsEmail
+        ob1.gender=gender
+        ob1.DOB=DOB1
+        ob1.classId=tblClasses.objects.get(id=classId)
+        ob1.save()
+        return HttpResponseRedirect(reverse('phome'))
+    return render(request,"empty.html")
+def changestatuss(request,sid):
+    if request.method=="GET":
+        if 'username' in request.COOKIES and 'passwd' in request.COOKIES and 'log' in request.COOKIES:
+            if request.COOKIES['log'] == 'p':
+                data=admin.objects.filter(userName=request.COOKIES['username'],password=request.COOKIES['passwd'])
+                if data:
+                    ob1=tblStudents.objects.get(studentsId=sid)
+                    if ob1.status==1:
+                        ob1.status=0
+                    else:
+                        ob1.status=1
+                    ob1.save()
+                else:
+                    return render(request,"plogin.html")
+    return HttpResponseRedirect(reverse('phome'))
+def deletestudent(request,sid):
+    if request.method=="GET":
+        if 'username' in request.COOKIES and 'passwd' in request.COOKIES and 'log' in request.COOKIES:
+            if request.COOKIES['log'] == 'p':
+                data=admin.objects.filter(userName=request.COOKIES['username'],password=request.COOKIES['passwd'])
+                li=tblStudents.objects.get(studentsId=sid)
+                if data and li:
+                    li.delete()
+                    return HttpResponseRedirect(reverse('phome'))
+                else:
+                    return render(request,"slogin.html")
+    return render(request,"empty.html")
+def markstudent(request,sid):
+    if request.method=="GET":
+        if 'username' in request.COOKIES and 'passwd' in request.COOKIES and 'log' in request.COOKIES:
+            if request.COOKIES['log'] == 'p':
+                data=admin.objects.filter(userName=request.COOKIES['username'],password=request.COOKIES['passwd'])
+                if data:
+                    l=tblStudents.objects.get(studentsId=sid)
+                    return render(request,"markp.html",{
+                        "student":tblResult.objects.filter(studentId=l),
+                        "val":sid,
+                    })
+                else:
+                    return render(request,"plogin.html")
+    if request.method=="POST":
+        l=tblStudents.objects.get(studentsId=sid)
+        lis=tblResult.objects.filter(studentId=l)
+        for i in lis:
+            mark=request.POST[str(i.subjectId.subjectName)]
+            i.mark=mark
+            i.save()
+        return HttpResponseRedirect(reverse('plogin'))
+    return render(request,"empty.html")
+def changepass(request):
+    if request.method=="GET":
+        if 'username' in request.COOKIES and 'passwd' in request.COOKIES and 'log' in request.COOKIES:
+            if request.COOKIES['log'] == 'p':
+                data=admin.objects.filter(userName=request.COOKIES['username'],password=request.COOKIES['passwd'])
+                if data:
+                    return render(request,"changepass.html")
+                else:
+                    return render(request,"plogin.html")
+    if request.method=="POST":
+        return HttpResponseRedirect(reverse('plogin'))
+    return render(request,"empty.html")
+
 
 def empty(request):
     return render(request,"empty.html")

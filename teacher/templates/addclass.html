@@ -28,34 +28,22 @@
     <div class="container-md align-content-center d-flex p-5 align-items-center justify-content-center">
         <div class="card ">
             <div class="card-header text-success text-center fs-3">
-                student
+                class
             </div>
             <div class="card-body">
                 <form method="post" action="{% url 'addclass' %}">
                     {% csrf_token %}
                     <div class="input-group mb-3">
-                        <span class="input-group-text" id="basic-addon1">studentsName</span>
-                        <input type="text" class="form-control" placeholder="studentsName" name="studentsName" aria-label="Username" aria-describedby="basic-addon1">
+                        <span class="input-group-text" id="basic-addon1">className</span>
+                        <input type="text" class="form-control" placeholder="className" name="className" aria-label="Username" aria-describedby="basic-addon1">
                     </div>
                     <div class="input-group mb-3">
-                        <span class="input-group-text" id="basic-addon1">rollId</span>
-                        <input type="text" class="form-control" placeholder="rollId" name="rollId" aria-label="Password" aria-describedby="basic-addon1">
+                        <span class="input-group-text" id="basic-addon1">classNameNumeric</span>
+                        <input type="text" class="form-control" placeholder="classNameNumeric" name="classNameNumeric" aria-label="Password" aria-describedby="basic-addon1">
                     </div>
                     <div class="input-group mb-3">
-                        <span class="input-group-text" id="basic-addon1">studentsEmail</span>
-                        <input type="text" class="form-control" placeholder="studentsEmail" name="studentsEmail" aria-label="Password" aria-describedby="basic-addon1">
-                    </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text" id="basic-addon1">gender</span>
-                        <input type="text" class="form-control" placeholder="gender" name="gender" aria-label="Username" aria-describedby="basic-addon1">
-                    </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text" id="basic-addon1">DOB</span>
-                        <input type="datetime" class="form-control" placeholder="DOB" name="DOB" aria-label="Password" aria-describedby="basic-addon1">
-                    </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text" id="basic-addon1">classId</span>
-                        <input type="text" class="form-control" placeholder="classId" name="classId" aria-label="Password" aria-describedby="basic-addon1">
+                        <span class="input-group-text" id="basic-addon1">section</span>
+                        <input type="text" class="form-control" placeholder="section" name="section" aria-label="Password" aria-describedby="basic-addon1">
                     </div>
                     <div class="row">
                         <div class="col">
