@@ -43,6 +43,7 @@ def Slogin(request):
         usname=request.POST["username"]
         passwd=request.POST["passwd"]
         data=tblStudents.objects.filter(studentsName=usname,rollId=passwd)
+        print(data,usname,passwd)
         if(data):
             response=HttpResponseRedirect(reverse('shome'))
             set_cookie(response,'username', usname)
@@ -79,7 +80,11 @@ def shome(request):
         if request.COOKIES['log'] == 's':
             data=tblStudents.objects.filter(studentsName=request.COOKIES['username'],rollId=request.COOKIES['passwd'])
             if data:
-                return render(request,"slogin.html")
+                l=tblStudents.objects.get(studentsId=data[0].studentsId)
+                return render(request,"shome.html",{
+                    "student":tblResult.objects.filter(studentId=l),
+                    "val":data[0].studentsId,
+                })
             else:
                 return render(request,"slogin.html")
     return render(request,"empty.html")
@@ -363,9 +368,25 @@ def changepass(request):
                 else:
                     return render(request,"plogin.html")
     if request.method=="POST":
+        oldpass=request.POST["password"]
+        newpass=request.POST["newpassword"]
+        ob1=admin.objects.get(id=1)
+        if ob1.password==oldpass:
+            ob1.password=newpass
+            ob1.save()
         return HttpResponseRedirect(reverse('plogin'))
     return render(request,"empty.html")
-
-
+def logoutp(request):
+    response=HttpResponseRedirect(reverse('plogin'))
+    response.delete_cookie("username")
+    response.delete_cookie("passwd")
+    response.delete_cookie("log")
+    return response
+def logouts(request):
+    response=HttpResponseRedirect(reverse('slogin'))
+    response.delete_cookie("username")
+    response.delete_cookie("passwd")
+    response.delete_cookie("log")
+    return response
 def empty(request):
     return render(request,"empty.html")

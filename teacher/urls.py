@@ -20,5 +20,8 @@ urlpatterns=[
   path('changestatuss/<int:sid>/',views.changestatuss,name="changestatuss"),
   path('deletestudent/<int:sid>/',views.deletestudent,name="deletestudent"),
   path('markstudent/<int:sid>/',views.markstudent,name="markstudent"),
+  path('changepass/',views.changepass,name="changepass"),
+  path('logoutp/',views.logoutp,name="logoutp"),
+  path('logouts/',views.logouts,name="logouts"),
   path('empty/',views.empty,name="empty")
 ]

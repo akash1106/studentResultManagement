@@ -7,63 +7,64 @@
 </head>
 <body>
     {% load static %}
-    <div class="container">
+    <div class="container bg-light ">
         <div class="row">
-            <div class="col">
-              
+            <div class="col text-center p-3 ">
+                <h4>Student Result Management</h4>
             </div>
             <div class="col">
               
             </div>
             <div class="col">
-                <div class="d-inline-flex p-2 align-self-md-end">
-                    <a class="danger"><button class="btn btn-light">class</button></a>
-                    <a class="danger"><button class="btn btn-light">subject</button></a>
-                    <a class="danger"><button class="btn btn-light">change password</button></a>
-                    <a class="danger"><button class="btn btn-light">logout</button></a>
+                <div class="p-2  btn-group" role="group" aria-label="Basic outlined example">
+                    <a class="danger" href="{% url 'phome' %}"><button class="btn btn-outline-primary">class</button></a>
+                    <a class="danger" href="{% url 'subject' %}"><button class="btn btn-outline-primary">subjects</button></a>
+                    <a class="danger" href="{% url 'changepass' %}"><button class="btn btn-outline-primary">change password</button></a>
+                    <a class="danger" href="{% url 'logoutp' %}"><button class="btn btn-outline-primary">logout</button></a>
                 </div> 
             </div>
-         
+        </div>
     </div>
-    
-    <table class="table table-striped">
-        <thead>
-            <tr>
-              <th scope="col">studentsId</th>
-              <th scope="col">studentsName</th>
-              <th scope="col">rollId</th>
-              <th scope="col">studentsEmail</th>
-              <th scope="col">gender</th>
-              <th scope="col">DOB</th>
-              <th scope="col">classId</th>
-              <th scope="col">regDate</th>
-              <th scope="col">updationDate</th>
-              <th scope="col">status</th>
-              <th scope="col">marks</th>
-              <th scope="col">edit</th>
-              <th scop="col">delete</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for stu in student %}
+    <div class="container">
+        <table class="table table-striped">
+            <thead>
                 <tr>
-                    <th scope="row">{{ stu.studentsId }}</th>
-                    <td>{{ stu.studentsName }}</td>
-                    <td>{{ stu.rollId }}</td>
-                    <td>{{ stu.studentsEmail }}</td>
-                    <td>{{ stu.gender }}</td>
-                    <td>{{ stu.DOB }}</td>
-                    <td>{{ stu.classId.id }}</td> 
-                    <td>{{ stu.regDate }}</td>
-                    <td>{{ stu.updationDate }}</td>
-                    <td><a class="danget" href="{% url 'changestatuss' stu.studentsId %}"><button class="btn btn-success"> {{ stu.status }}</button></a></td>
-                    <td><a class="danger" href="{% url 'markstudent' stu.studentsId %}" ><button class="btn btn-success">mark</button></a></td>
-                    <td><a class="danger" href="{% url 'editstudent' stu.studentsId %}"><button class="btn btn-success">edit</button></a></td>
-                    <td><a class="danger" href="{% url 'deletestudent' stu.studentsId %}"><button class="btn btn-success">Delete</button></a></td>
+                <th scope="col">studentsId</th>
+                <th scope="col">studentsName</th>
+                <th scope="col">rollId</th>
+                <th scope="col">studentsEmail</th>
+                <th scope="col">gender</th>
+                <th scope="col">DOB</th>
+                <th scope="col">classId</th>
+                <th scope="col">regDate</th>
+                <th scope="col">updationDate</th>
+                <th scope="col">status</th>
+                <th scope="col">marks</th>
+                <th scope="col">edit</th>
+                <th scop="col">delete</th>
                 </tr>
-            {% endfor %}
-          </tbody>
-    </table>
-    <a class="success" href="{% url 'addstudent' %}"><button class="btn btn-success">ADD</button></a>
+            </thead>
+            <tbody>
+                {% for stu in student %}
+                    <tr>
+                        <th scope="row">{{ stu.studentsId }}</th>
+                        <td>{{ stu.studentsName }}</td>
+                        <td>{{ stu.rollId }}</td>
+                        <td>{{ stu.studentsEmail }}</td>
+                        <td>{{ stu.gender }}</td>
+                        <td>{{ stu.DOB }}</td>
+                        <td>{{ stu.classId.id }}</td> 
+                        <td>{{ stu.regDate }}</td>
+                        <td>{{ stu.updationDate }}</td>
+                        <td><a class="danget" href="{% url 'changestatuss' stu.studentsId %}"><button class="btn btn-success"> {{ stu.status }}</button></a></td>
+                        <td><a class="danger" href="{% url 'markstudent' stu.studentsId %}" ><button class="btn btn-success">mark</button></a></td>
+                        <td><a class="danger" href="{% url 'editstudent' stu.studentsId %}"><button class="btn btn-success">edit</button></a></td>
+                        <td><a class="danger" href="{% url 'deletestudent' stu.studentsId %}"><button class="btn btn-success">Delete</button></a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a class="success" href="{% url 'addstudent' %}"><button class="btn btn-success">ADD</button></a>
+    </div>
 </body>
 </html>

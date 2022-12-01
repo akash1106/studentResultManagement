@@ -10,22 +10,20 @@
     <div class="container-md align-content-center d-flex p-5 align-items-center justify-content-center">
         <div class="card ">
             <div class="card-header text-success text-center fs-3">
-                password
+                mark
             </div>
             <div class="card-body">
-                <form method="post" action="{% url 'changepass' %}">
+                <form method="post">
                     {% csrf_token %}
-                    <div class="input-group mb-3">
-                        <span class="input-group-text" id="basic-addon1">password:</span>
-                        <input type="text" class="form-control" placeholder="password"  name="password" aria-label="Username" aria-describedby="basic-addon1">
-                    </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text" id="basic-addon1"> new password:</span>
-                        <input type="text" class="form-control" placeholder=" new password"  name="newpassword" aria-label="Username" aria-describedby="basic-addon1">
-                    </div>
+                    {% for stu in student %}
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1">{{ stu.subjectId.subjectName }}</span>
+                            <input type="text" class="form-control" placeholder="mark" value="{{ stu.mark }}" readonly name="{{ stu.subjectId.subjectName }}" aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+                    {% endfor %}
                     <div class="row">
                         <div class="col">
-                            <button type="submit" id="btnsubmit" class="btn btn-success"style="width: 100%;">Submit</button>
+                            <a href="{% url 'logouts' %}"><button type="button" id="btnsubmit" class="btn btn-danger"style="width: 100%;">logout</button></a>
                         </div>
                     </div>
                 </form>

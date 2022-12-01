@@ -7,55 +7,56 @@
 </head>
 <body>
     {% load static %}
-    <div class="container">
+    <div class="container bg-light ">
         <div class="row">
-            <div class="col">
-              
+            <div class="col text-center p-3 ">
+                <h4>Student Result Management</h4>
             </div>
             <div class="col">
               
             </div>
             <div class="col">
-                <div class="d-inline-flex p-2 align-self-md-end">
-                    <a class="danger"><button class="btn btn-light">class</button></a>
-                    <a class="danger"><button class="btn btn-light">Student</button></a>
-                    <a class="danger"><button class="btn btn-light">change password</button></a>
-                    <a class="danger"><button class="btn btn-light">logout</button></a>
+                <div class="p-2  btn-group" role="group" aria-label="Basic outlined example">
+                    <a class="danger" href="{% url 'phome' %}"><button class="btn btn-outline-primary">class</button></a>
+                    <a class="danger" href="{% url 'student' %}"><button class="btn btn-outline-primary">Student</button></a>
+                    <a class="danger" href="{% url 'changepass' %}"><button class="btn btn-outline-primary">change password</button></a>
+                    <a class="danger" href="{% url 'logoutp' %}"><button class="btn btn-outline-primary">logout</button></a>
                 </div> 
             </div>
-         
+        </div>
     </div>
-    
-    <table class="table table-striped">
-        <thead>
-            <tr>
-              <th scope="col">ID</th>
-              <th scope="col">subjectName</th>
-              <th scope="col">subjectCode</th>
-              <th scope="col">creationDate</th>
-              <th scope="col">updationDate</th>
-              <th scope="col">classId</th>
-              <th scope="col">status</th>
-              <th scope="col">edit</th>
-              <th scope="col">delete</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for cla in cla1 %}
+    <div class="container">
+        <table class="table table-striped">
+            <thead>
                 <tr>
-                    <th scope="row">{{ cla.id }}</th>
-                    <td>{{ cla.subjectId.subjectName }}</td>
-                    <td>{{ cla.subjectId.subjectCode }}</td>
-                    <td>{{ cla.subjectId.creationDate }}</td>
-                    <td>{{ cla.subjectId.updationDate }}</td>
-                    <td>{{ cla.classId.id }}</td>
-                    <td><a class="danget" href="{% url 'changestatus' cla.id %}"><button class="btn btn-success"> {{ cla.status }}</button></a></td>
-                    <td><a class="danger"  href="{% url 'editsubject' cla.id %}"><button class="btn btn-success">Edit</button></a></td>
-                    <td><a class="danger" href="{% url 'deletesubject' cla.id %}"><button class="btn btn-success">Delete</button></a></td>
+                <th scope="col">ID</th>
+                <th scope="col">subjectName</th>
+                <th scope="col">subjectCode</th>
+                <th scope="col">creationDate</th>
+                <th scope="col">updationDate</th>
+                <th scope="col">classId</th>
+                <th scope="col">status</th>
+                <th scope="col">edit</th>
+                <th scope="col">delete</th>
                 </tr>
-            {% endfor %}
-          </tbody>
-    </table>
-    <a class="success" href="{% url 'addsubject' %}"><button class="btn btn-success">ADD</button></a>
+            </thead>
+            <tbody>
+                {% for cla in cla1 %}
+                    <tr>
+                        <th scope="row">{{ cla.id }}</th>
+                        <td>{{ cla.subjectId.subjectName }}</td>
+                        <td>{{ cla.subjectId.subjectCode }}</td>
+                        <td>{{ cla.subjectId.creationDate }}</td>
+                        <td>{{ cla.subjectId.updationDate }}</td>
+                        <td>{{ cla.classId.id }}</td>
+                        <td><a class="danget" href="{% url 'changestatus' cla.id %}"><button class="btn btn-success"> {{ cla.status }}</button></a></td>
+                        <td><a class="danger"  href="{% url 'editsubject' cla.id %}"><button class="btn btn-success">Edit</button></a></td>
+                        <td><a class="danger" href="{% url 'deletesubject' cla.id %}"><button class="btn btn-success">Delete</button></a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a class="success" href="{% url 'addsubject' %}"><button class="btn btn-success">ADD</button></a>
+    </div>
 </body>
 </html>
