@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    {% load static %}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+              
+            </div>
+            <div class="col">
+              
+            </div>
+            <div class="col">
+                <div class="d-inline-flex p-2 align-self-md-end">
+                    <a class="danger"><button class="btn btn-light">class</button></a>
+                    <a class="danger"><button class="btn btn-light">subject</button></a>
+                    <a class="danger"><button class="btn btn-light">change password</button></a>
+                    <a class="danger"><button class="btn btn-light">logout</button></a>
+                </div> 
+            </div>
+         
+    </div>
+    
+    <table class="table table-striped">
+        <thead>
+            <tr>
+              <th scope="col">studentsId</th>
+              <th scope="col">studentsName</th>
+              <th scope="col">rollId</th>
+              <th scope="col">studentsEmail</th>
+              <th scope="col">gender</th>
+              <th scope="col">DOB</th>
+              <th scope="col">classId</th>
+              <th scope="col">regDate</th>
+              <th scope="col">updationDate</th>
+              <th scope="col">status</th>
+              <th scope="col">marks</th>
+              <th scope="col">edit</th>
+              <th scop="col">delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for stu in student %}
+                <tr>
+                    <th scope="row">{{ stu.studentsId }}</th>
+                    <td>{{ stu.studentsName }}</td>
+                    <td>{{ stu.rollId }}</td>
+                    <td>{{ stu.studentsEmail }}</td>
+                    <td>{{ stu.gender }}</td>
+                    <td>{{ stu.DOB }}</td>
+                    <td>{{ stu.classId.id }}</td> 
+                    <td>{{ stu.regDate }}</td>
+                    <td>{{ stu.updationDate }}</td>
+                    <td><a class="danget" ><button class="btn btn-success"> {{ stu.status }}</button></a></td>
+                    <td><a class="danger"  ><button class="btn btn-success">mark</button></a></td>
+                    <td><a class="danger"  ><button class="btn btn-success">edit</button></a></td>
+                    <td><a class="danger" ><button class="btn btn-success">Delete</button></a></td>
+                </tr>
+            {% endfor %}
+          </tbody>
+    </table>
+    <a class="success" ><button class="btn btn-success">ADD</button></a>
+</body>
+</html>
