@@ -43,7 +43,6 @@ def Slogin(request):
         usname=request.POST["username"]
         passwd=request.POST["passwd"]
         data=tblStudents.objects.filter(studentsName=usname,rollId=passwd)
-        print(data,usname,passwd)
         if(data):
             response=HttpResponseRedirect(reverse('shome'))
             set_cookie(response,'username', usname)
